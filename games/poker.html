@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PIXEL POKER | PIXEL CASINO</title>
+  <link rel="stylesheet" href="poker.css">
+</head>
+
+<body>
+  <div class="pixel-bg"></div>
+
+  <header>
+    <a href="../games.html" class="back">← GAME SELECT</a>
+    <h1>PIXEL POKER</h1>
+  </header>
+
+  <main class="poker-layout">
+
+    <section class="top-panel">
+      <div class="status-box">
+        <p>POINT</p>
+        <strong><span id="points">0</span> P</strong>
+      </div>
+
+      <div class="status-box">
+        <p>BET</p>
+        <strong><span id="betText">10</span> P</strong>
+      </div>
+    </section>
+
+    <section class="bet-buttons">
+      <button class="bet-btn active" data-bet="10">10P</button>
+      <button class="bet-btn" data-bet="30">30P</button>
+      <button class="bet-btn" data-bet="50">50P</button>
+      <button class="bet-btn" data-bet="100">100P</button>
+    </section>
+
+    <section class="table">
+      <div id="cards" class="cards"></div>
+    </section>
+
+    <section class="message-box">
+      <p id="message">DEALを押してカードを配ろう！</p>
+      <p>役：<span id="handName">---</span></p>
+    </section>
+
+    <section class="controls">
+      <button id="dealBtn" class="main-btn">DEAL</button>
+      <button id="drawBtn" class="main-btn" disabled>DRAW</button>
+    </section>
+
+    <section class="pay-table">
+      <h2>PAY TABLE</h2>
+      <div>ワンペア：BET ×1</div>
+      <div>ツーペア：BET ×2</div>
+      <div>スリーカード：BET ×4</div>
+      <div>ストレート：BET ×6</div>
+      <div>フラッシュ：BET ×8</div>
+      <div>フルハウス：BET ×10</div>
+      <div>フォーカード：BET ×25</div>
+      <div>ロイヤル：BET ×50</div>
+    </section>
+
+    <section class="help">
+      <p>SPACE：DEAL / DRAW</p>
+      <p>1〜5：カード選択</p>
+    </section>
+
+  </main>
+
+  <script src="../script.js"></script>
+  <script src="poker.js"></script>
+</body>
+</html>

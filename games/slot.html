@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PIXEL SLOT</title>
+  <link rel="stylesheet" href="slot.css">
+</head>
+
+<body>
+  <div class="pixel-bg"></div>
+
+  <header>
+    <div class="logo">
+      PIXEL
+      <span>SLOT</span>
+    </div>
+
+    <a href="../games.html" class="back-btn">
+      ← GAME SELECT
+    </a>
+  </header>
+
+  <main>
+    <section class="slot-wrapper">
+
+      <div class="left-panel">
+        <div class="title-box">
+          <p class="mini">PIXEL CASINO</p>
+          <h1>PIXEL SLOT</h1>
+        </div>
+
+        <div class="info-box">
+          <div class="info">
+            <span>POINT</span>
+            <h2 id="points">100</h2>
+          </div>
+
+          <div class="info">
+            <span>BET</span>
+            <h2 id="betText">10</h2>
+          </div>
+        </div>
+
+        <div class="bet-buttons">
+          <button class="bet-btn active" data-bet="5">BET 5</button>
+          <button class="bet-btn" data-bet="10">BET 10</button>
+          <button class="bet-btn" data-bet="20">BET 20</button>
+          <button class="bet-btn" data-bet="50">BET 50</button>
+        </div>
+
+        <div class="message-box">
+          <b>配当表</b><br>
+          777：BET × 30<br>
+          💎💎💎：BET × 10<br>
+          🔔🔔🔔：BET × 6<br>
+          同じ絵柄3つ：BET × 4<br>
+          同じ絵柄2つ：BET × 1
+        </div>
+      </div>
+
+      <div class="machine-area">
+
+        <div class="chance-lamp" id="lamp">
+          CHANCE
+        </div>
+
+        <div class="slot-machine">
+          <div class="reel-window">
+            <div class="reel" id="reel0"><span>7</span></div>
+            <div class="reel" id="reel1"><span>7</span></div>
+            <div class="reel" id="reel2"><span>7</span></div>
+          </div>
+
+          <div class="stop-buttons">
+            <button class="stop-btn" id="stop0" disabled>STOP</button>
+            <button class="stop-btn" id="stop1" disabled>STOP</button>
+            <button class="stop-btn" id="stop2" disabled>STOP</button>
+          </div>
+        </div>
+
+        <button class="spin-btn" id="spinBtn">
+          SPIN
+        </button>
+
+        <div class="message-box" id="message">
+          BETを選んでSPIN
+        </div>
+
+      </div>
+
+    </section>
+  </main>
+
+  <script src="../script.js"></script>
+  <script src="slot.js"></script>
+</body>
+</html>

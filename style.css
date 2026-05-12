@@ -1,0 +1,399 @@
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
+  background:#02030a;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* 背景を豪華に */
+.pixel-bg{
+  position:fixed;
+  inset:0;
+  z-index:-10;
+  background:
+    radial-gradient(circle at 72% 18%,rgba(180,0,255,.45),transparent 26%),
+    radial-gradient(circle at 28% 32%,rgba(0,255,200,.22),transparent 30%),
+    radial-gradient(circle at 50% 85%,rgba(255,196,0,.16),transparent 35%),
+    linear-gradient(180deg,#07132e,#02030a 80%);
+}
+
+.pixel-bg::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:18px 18px;
+}
+
+/* ヘッダー */
+header{
+  height:82px;
+  position:sticky;
+  top:0;
+  z-index:50;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 5vw;
+  background:rgba(0,0,0,.68);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,196,0,.45);
+  box-shadow:0 0 25px rgba(255,196,0,.12);
+}
+
+.logo{
+  font-size:clamp(28px,3vw,46px);
+  font-weight:900;
+  line-height:.8;
+  color:#ffc400;
+  letter-spacing:2px;
+  text-shadow:
+    5px 5px 0 #6a2a00,
+    0 0 22px rgba(255,196,0,.95);
+}
+
+.logo span{
+  display:block;
+  color:#13e786;
+  text-shadow:
+    5px 5px 0 #003d2f,
+    0 0 22px rgba(19,231,134,.85);
+}
+
+nav{
+  display:flex;
+  gap:30px;
+  font-weight:900;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+}
+
+nav a.active,
+nav a:hover{
+  color:#ffd21a;
+}
+
+/* ボタン */
+.header-buttons{
+  display:flex;
+  gap:12px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  border:0;
+  cursor:pointer;
+  font-weight:900;
+  border-radius:8px;
+  padding:16px 28px;
+  font-size:16px;
+  transition:.2s;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+}
+
+.btn-yellow{
+  background:linear-gradient(#fff27a,#ffb400);
+  color:#241400;
+  box-shadow:
+    inset 0 -6px 0 rgba(120,60,0,.45),
+    0 0 24px rgba(255,190,0,.65);
+}
+
+.btn-outline{
+  background:rgba(0,0,0,.25);
+  color:white;
+  border:2px solid #ffc400;
+}
+
+/* ホーム */
+.hero{
+  min-height:calc(100vh - 82px);
+  display:grid;
+  grid-template-columns:1fr 1.05fr;
+  align-items:center;
+  gap:20px;
+  padding:48px 5vw 24px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-left{
+  position:relative;
+  z-index:10;
+}
+
+.hero h1{
+  font-size:clamp(70px,9vw,150px);
+  line-height:.78;
+  color:#ffc400;
+  font-weight:900;
+  text-shadow:
+    8px 8px 0 #6d2c00,
+    0 0 38px rgba(255,196,0,1);
+}
+
+.hero h1 span{
+  display:block;
+  color:#18ea88;
+  text-shadow:
+    8px 8px 0 #004f3b,
+    0 0 38px rgba(24,234,136,.9);
+}
+
+.lead{
+  margin-top:28px;
+  font-size:clamp(24px,2.5vw,42px);
+  color:#ffd21a;
+  font-weight:900;
+  text-shadow:3px 3px 0 #351700;
+}
+
+.sub{
+  margin-top:18px;
+  line-height:1.8;
+  font-size:20px;
+  color:#f0f0f0;
+  font-weight:800;
+}
+
+.cta{
+  display:flex;
+  gap:18px;
+  margin-top:34px;
+  flex-wrap:wrap;
+}
+
+/* 城エリア */
+.hero-right{
+  position:relative;
+  height:650px;
+  z-index:1;
+}
+
+.beam{
+  position:absolute;
+  bottom:140px;
+  width:150px;
+  height:560px;
+  opacity:.55;
+  filter:blur(9px);
+  clip-path:polygon(50% 0,100% 100%,0 100%);
+  z-index:0;
+}
+
+.beam-green{
+  left:22%;
+  background:linear-gradient(to top,transparent,#00ff95);
+}
+
+.beam-purple{
+  right:20%;
+  background:linear-gradient(to top,transparent,#d400ff);
+}
+
+.castle{
+  position:absolute;
+  left:50%;
+  bottom:0;
+  transform:translateX(-50%);
+  width:min(760px,100%);
+  height:600px;
+  z-index:1;
+}
+
+.tower,
+.center-build,
+.side-build{
+  position:absolute;
+  bottom:0;
+  background:
+    linear-gradient(180deg,#8b4a16,#3b210d);
+  border:5px solid #ffb300;
+  box-shadow:
+    0 0 28px rgba(255,179,0,.48),
+    inset 0 0 24px rgba(0,0,0,.55);
+}
+
+.center-build{
+  left:50%;
+  transform:translateX(-50%);
+  width:340px;
+  height:560px;
+  clip-path:polygon(
+    0 14%,
+    18% 14%,
+    18% 0,
+    82% 0,
+    82% 14%,
+    100% 14%,
+    100% 100%,
+    0 100%
+  );
+}
+
+.tower.left{
+  left:60px;
+  width:160px;
+  height:400px;
+}
+
+.tower.right{
+  right:60px;
+  width:160px;
+  height:400px;
+}
+
+.side-build.left{
+  left:0;
+  width:170px;
+  height:300px;
+}
+
+.side-build.right{
+  right:0;
+  width:170px;
+  height:300px;
+}
+
+.crown{
+  position:absolute;
+  left:50%;
+  top:-35px;
+  transform:translateX(-50%);
+  font-size:118px;
+  color:#ffd21a;
+  filter:drop-shadow(0 0 25px #ffd21a);
+  z-index:3;
+}
+
+.casino-sign{
+  position:absolute;
+  left:50%;
+  bottom:88px;
+  transform:translateX(-50%);
+  background:#2b1600;
+  border:6px solid #ffbf00;
+  padding:18px 42px;
+  color:#ffd21a;
+  font-size:clamp(44px,4vw,76px);
+  font-weight:900;
+  text-shadow:4px 4px 0 #9c3b00;
+  box-shadow:
+    0 0 35px rgba(255,191,0,.75),
+    inset 0 0 20px rgba(255,196,0,.18);
+  z-index:4;
+}
+
+.window{
+  position:absolute;
+  width:22px;
+  height:36px;
+  background:linear-gradient(#2ef0c8,#09725c);
+  border:3px solid #ffbf00;
+  box-shadow:0 0 16px rgba(48,242,208,.85);
+  z-index:5;
+}
+
+.w1{left:110px;top:220px;}
+.w2{left:170px;top:280px;}
+.w3{right:110px;top:220px;}
+.w4{right:170px;top:280px;}
+.w5{left:370px;top:180px;}
+.w6{right:370px;top:180px;}
+
+/* 浮いてるドルキューブ */
+.coin{
+  position:absolute;
+  width:48px;
+  height:48px;
+  background:linear-gradient(135deg,#fff06d,#ff9d00);
+  border:4px solid #ffbf00;
+  box-shadow:0 0 20px rgba(255,184,0,.75);
+  clip-path:polygon(18% 0,82% 0,100% 18%,100% 82%,82% 100%,18% 100%,0 82%,0 18%);
+  animation:float 4s ease-in-out infinite;
+  z-index:2;
+}
+
+.coin::after{
+  content:"$";
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#8b4a00;
+  font-size:24px;
+  font-weight:900;
+}
+
+.c1{left:3%;top:70%;}
+.c2{left:35%;top:72%;animation-delay:.7s;}
+.c3{right:8%;top:18%;animation-delay:1.2s;}
+.c4{right:1%;top:55%;animation-delay:.4s;}
+
+@keyframes float{
+  0%,100%{
+    transform:translateY(0) rotate(18deg);
+  }
+  50%{
+    transform:translateY(-22px) rotate(-8deg);
+  }
+}
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .header-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 15px;
+  }
+
+  .hero-left h1 {
+    font-size: 48px;
+  }
+
+  .hero-right {
+    width: 100%;
+    transform: scale(0.8);
+  }
+
+  .castle {
+    margin: 0 auto;
+  }
+
+  .points-display {
+    font-size: 14px;
+  }
+}

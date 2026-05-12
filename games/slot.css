@@ -1,0 +1,307 @@
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#02030a;
+  color:white;
+  overflow:auto;
+}
+
+.pixel-bg{
+  position:fixed;
+  inset:0;
+  z-index:-10;
+  background:
+  radial-gradient(circle at 70% 18%,rgba(169,0,255,.35),transparent 25%),
+  radial-gradient(circle at 25% 35%,rgba(0,183,255,.2),transparent 28%),
+  radial-gradient(circle at 50% 90%,rgba(255,196,0,.14),transparent 35%),
+  linear-gradient(180deg,#071127,#02030a);
+}
+
+header{
+  height:82px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 5vw;
+  background:rgba(0,0,0,.65);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,196,0,.35);
+}
+
+.logo{
+  font-size:42px;
+  font-weight:900;
+  line-height:.8;
+  color:#ffc400;
+}
+
+.logo span{
+  display:block;
+  color:#13e786;
+}
+
+.back-btn{
+  text-decoration:none;
+  color:#ffd21a;
+  font-weight:900;
+}
+
+.slot-wrapper{
+  min-height:calc(100vh - 82px);
+  display:grid;
+  grid-template-columns:380px 1fr;
+  gap:30px;
+  align-items:start;
+  padding:20px 5vw 40px;
+}
+
+.left-panel{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.title-box h1{
+  font-size:56px;
+  color:#ffd21a;
+}
+
+.mini{
+  color:#13e786;
+  font-weight:900;
+  letter-spacing:3px;
+  margin-bottom:10px;
+}
+
+.info-box{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.info{
+  background:rgba(20,12,40,.92);
+  border:2px solid rgba(255,196,0,.3);
+  border-radius:18px;
+  padding:18px;
+}
+
+.info span{
+  color:#aaa;
+  font-size:14px;
+}
+
+.info h2{
+  margin-top:8px;
+  font-size:36px;
+  color:#ffd21a;
+}
+
+.bet-buttons{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.bet-btn{
+  padding:16px;
+  border:0;
+  border-radius:12px;
+  background:#241235;
+  color:white;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.bet-btn.active{
+  background:linear-gradient(#ffe66e,#ffb400);
+  color:#241400;
+}
+
+.machine-area{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin-top:-20px;
+}
+
+.chance-lamp{
+  width:240px;
+  height:62px;
+  margin-bottom:20px;
+  border-radius:18px;
+  background:#1a0b12;
+  border:4px solid #4d1d1d;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  font-weight:900;
+  color:#5a1a1a;
+  transition:.25s;
+}
+
+.chance-lamp.on{
+  background:linear-gradient(#fff36b,#ffb400);
+  color:#4d1e00;
+  border-color:#ffe066;
+  box-shadow:0 0 35px rgba(255,191,0,.8);
+}
+
+.slot-machine{
+  width:620px;
+  background:linear-gradient(180deg,#581a00,#240816);
+  border:8px solid #ffbf00;
+  border-radius:24px;
+  padding:26px;
+  box-shadow:
+    0 0 35px rgba(255,191,0,.35),
+    inset 0 0 24px rgba(0,0,0,.55);
+}
+
+.reel-window{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.reel{
+  height:190px;
+  background:#fff4db;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  box-shadow:inset 0 -10px 0 rgba(0,0,0,.18);
+}
+
+.reel span{
+  font-size:96px;
+  font-weight:900;
+  color:#e30012;
+}
+
+.reel.spin span{
+  animation:spin .08s linear infinite;
+}
+
+@keyframes spin{
+  0%{
+    transform:translateY(-25px);
+    filter:blur(2px);
+  }
+
+  100%{
+    transform:translateY(25px);
+    filter:blur(2px);
+  }
+}
+
+.stop-buttons{
+  margin-top:22px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.stop-btn{
+  height:64px;
+  border:0;
+  border-radius:12px;
+  background:linear-gradient(#ff4f6d,#b70024);
+  color:white;
+  font-size:22px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.stop-btn:disabled{
+  opacity:.4;
+}
+
+.spin-btn{
+  margin-top:24px;
+  width:260px;
+  height:74px;
+  border:0;
+  border-radius:16px;
+  background:linear-gradient(#13e786,#09a865);
+  color:#002316;
+  font-size:30px;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 0 25px rgba(19,231,134,.45);
+}
+
+.message-box{
+  margin-top:20px;
+  width:100%;
+  padding:18px;
+  border-radius:16px;
+  background:rgba(15,10,28,.92);
+  border:2px solid rgba(255,196,0,.28);
+  text-align:center;
+  font-size:18px;
+  font-weight:900;
+  color:#ffd21a;
+  line-height:1.7;
+}
+
+@media(max-width:1100px){
+  .slot-wrapper{
+    grid-template-columns:1fr;
+  }
+
+  .slot-machine{
+    width:100%;
+  }
+
+  .machine-area{
+    margin-top:0;
+  }
+}
+
+@media(max-width:760px){
+  header{
+    padding:0 18px;
+  }
+
+  .slot-wrapper{
+    padding:20px 18px 60px;
+  }
+
+  .title-box h1{
+    font-size:44px;
+  }
+
+  .slot-machine{
+    padding:18px;
+  }
+
+  .reel{
+    height:130px;
+  }
+
+  .reel span{
+    font-size:66px;
+  }
+
+  .stop-btn{
+    height:56px;
+    font-size:18px;
+  }
+
+  .spin-btn{
+    width:100%;
+  }
+
+  .message-box{
+    width:100%;
+  }
+}
