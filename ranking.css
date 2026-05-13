@@ -1,0 +1,217 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  min-height:100vh;
+  font-family:Arial,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
+  background:
+    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.78)),
+    url("games-bg.png");
+  background-size:cover;
+  background-position:center;
+  color:white;
+}
+
+/* ===== HEADER ===== */
+
+header{
+  height:82px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 5vw;
+  background:rgba(0,0,0,.38);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,196,0,.18);
+}
+
+.logo{
+  text-decoration:none;
+  font-size:clamp(28px,3vw,46px);
+  font-weight:900;
+  line-height:.8;
+  color:#ffc400;
+  letter-spacing:2px;
+  text-shadow:
+    5px 5px 0 #6a2a00,
+    0 0 20px rgba(255,196,0,.85);
+}
+
+.logo span{
+  display:block;
+  color:#13e786;
+  text-shadow:
+    5px 5px 0 #003d2f,
+    0 0 20px rgba(19,231,134,.75);
+}
+
+nav{
+  display:flex;
+  gap:30px;
+  font-weight:900;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  transition:.2s;
+}
+
+nav a.active,
+nav a:hover{
+  color:#ffd21a;
+}
+
+/* ===== RANKING ===== */
+
+.ranking-page{
+  min-height:calc(100vh - 82px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 18px;
+}
+
+.ranking-card{
+  width:min(620px,94vw);
+  text-align:center;
+  padding:42px 28px;
+  border-radius:28px;
+  background:rgba(8,8,18,.78);
+  backdrop-filter:blur(14px);
+  border:2px solid rgba(255,210,26,.35);
+  box-shadow:
+    0 0 44px rgba(0,0,0,.6),
+    inset 0 0 24px rgba(255,255,255,.04);
+}
+
+.small-title{
+  color:#13e786;
+  font-weight:900;
+  letter-spacing:4px;
+  margin-bottom:14px;
+  text-shadow:0 0 14px rgba(19,231,134,.8);
+}
+
+.ranking-card h1{
+  font-size:clamp(38px,6vw,70px);
+  color:#ffd21a;
+  margin-bottom:30px;
+  text-shadow:
+    5px 5px 0 #5b2600,
+    0 0 28px rgba(255,196,0,.75);
+}
+
+.rank-box{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:24px;
+  padding:26px 20px;
+  border-radius:22px;
+  background:linear-gradient(180deg,rgba(255,196,0,.18),rgba(0,0,0,.35));
+  border:2px solid rgba(255,210,26,.4);
+  box-shadow:0 0 24px rgba(255,196,0,.18);
+}
+
+.rank-icon{
+  font-size:72px;
+  filter:drop-shadow(0 0 14px rgba(255,210,26,.7));
+}
+
+.rank-box p,
+.date-box p,
+.now-box p{
+  color:#ffeaa7;
+  font-weight:900;
+  margin-bottom:8px;
+}
+
+.rank-box h2{
+  color:#ffd21a;
+  font-size:48px;
+  text-shadow:0 0 14px rgba(255,210,26,.7);
+}
+
+.date-box,
+.now-box{
+  margin-top:20px;
+  padding:20px;
+  border-radius:18px;
+  background:rgba(0,0,0,.42);
+  border:1px solid rgba(255,210,26,.25);
+}
+
+.date-box h3{
+  color:#b8f7ff;
+  font-size:24px;
+}
+
+.now-box h3{
+  color:#ffffff;
+  font-size:28px;
+}
+
+.back-btn{
+  display:inline-block;
+  margin-top:28px;
+  color:#ffd21a;
+  font-weight:900;
+  text-decoration:none;
+}
+
+.back-btn:hover{
+  text-decoration:underline;
+}
+
+/* ===== MOBILE ===== */
+
+@media(max-width:760px){
+
+  header{
+    height:auto;
+    flex-direction:column;
+    gap:16px;
+    padding:18px;
+  }
+
+  .logo{
+    text-align:center;
+  }
+
+  nav{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    width:100%;
+  }
+
+  nav a{
+    font-size:14px;
+    padding:8px 12px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,196,0,.35);
+    border-radius:999px;
+  }
+
+  .ranking-card{
+    padding:32px 20px;
+  }
+
+  .rank-box{
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .rank-icon{
+    font-size:60px;
+  }
+
+  .rank-box h2{
+    font-size:40px;
+  }
+
+}

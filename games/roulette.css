@@ -5,73 +5,79 @@
 }
 
 body{
-  font-family:Arial,sans-serif;
-  background:#02030a;
+  font-family:Arial,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
   color:white;
-  overflow:auto;
+  overflow-x:hidden;
+  background:
+    linear-gradient(rgba(0,0,0,.12),rgba(0,0,0,.45)),
+    url("roulette-bg.png") center center / cover no-repeat fixed;
 }
 
-.pixel-bg{
-  position:fixed;
-  inset:0;
-  z-index:-10;
-  background:
-    radial-gradient(circle at 70% 18%,rgba(169,0,255,.35),transparent 25%),
-    radial-gradient(circle at 25% 35%,rgba(0,183,255,.2),transparent 28%),
-    radial-gradient(circle at 50% 90%,rgba(255,196,0,.14),transparent 35%),
-    linear-gradient(180deg,#071127,#02030a);
-}
+/* HEADER */
 
 header{
-  height:82px;
+  height:76px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 5vw;
-  background:rgba(0,0,0,.65);
+  padding:0 4vw;
+  background:rgba(0,0,0,.55);
   backdrop-filter:blur(10px);
-  border-bottom:1px solid rgba(255,196,0,.35);
+  border-bottom:1px solid rgba(255,196,0,.25);
+  position:relative;
+  z-index:20;
 }
 
 .back{
   text-decoration:none;
   color:#ffd21a;
   font-weight:900;
+  font-size:18px;
 }
 
 h1{
   font-size:42px;
   font-weight:900;
   color:#ffc400;
+  text-shadow:
+    4px 4px 0 #5b2600,
+    0 0 20px rgba(255,196,0,.75);
 }
 
+/* LAYOUT */
+
 .layout{
-  min-height:calc(100vh - 82px);
+  min-height:calc(100vh - 76px);
   display:grid;
-  grid-template-columns:300px 1fr 320px;
-  gap:30px;
-  align-items:start;
-  padding:28px 5vw 50px;
+  grid-template-columns:270px 1fr 300px;
+  gap:24px;
+  align-items:center;
+  padding:24px 4vw 36px;
 }
 
 .panel{
   display:flex;
   flex-direction:column;
-  gap:20px;
+  gap:18px;
+  position:relative;
+  z-index:10;
 }
 
+/* BOX */
+
 .box,
-.message-box,
-.help{
-  background:rgba(20,12,40,.92);
-  border:2px solid rgba(255,196,0,.3);
+.message-box{
+  background:rgba(12,8,24,.68);
+  border:1px solid rgba(255,196,0,.28);
   border-radius:18px;
   padding:18px;
   text-align:center;
+  backdrop-filter:blur(10px);
+  box-shadow:0 0 26px rgba(0,0,0,.35);
 }
 
 .label{
-  color:#aaa;
+  color:#ddd;
   font-size:14px;
   font-weight:900;
   letter-spacing:2px;
@@ -82,14 +88,17 @@ h1{
 .box h2{
   font-size:34px;
   color:#ffd21a;
+  text-shadow:0 0 12px rgba(255,196,0,.6);
 }
 
+/* FEVER */
+
 .gauge{
-  height:26px;
-  background:#160920;
+  height:24px;
+  background:rgba(10,5,20,.8);
   border-radius:999px;
   overflow:hidden;
-  border:2px solid rgba(255,196,0,.35);
+  border:1px solid rgba(255,196,0,.35);
 }
 
 #feverGauge{
@@ -107,6 +116,8 @@ h1{
   font-weight:900;
 }
 
+/* HISTORY */
+
 .history{
   display:flex;
   flex-wrap:wrap;
@@ -121,40 +132,37 @@ h1{
   font-weight:900;
 }
 
-.history-item.red{
-  background:#b70024;
-}
+.history-item.red{background:#b70024;}
+.history-item.black{background:#111;}
+.history-item.green{background:#09a865;}
 
-.history-item.black{
-  background:#111;
-}
-
-.history-item.green{
-  background:#09a865;
-}
+/* ROULETTE */
 
 .main-game{
   position:relative;
   display:flex;
   flex-direction:column;
   align-items:center;
+  justify-content:center;
+  z-index:8;
+  margin-top:80px;
 }
 
 .roulette-frame{
   position:relative;
-  width:min(520px,86vw);
-  height:min(520px,86vw);
-  margin-bottom:24px;
+  width:min(500px,42vw);
+  height:min(500px,42vw);
+  margin-bottom:22px;
 }
 
 .pointer{
   position:absolute;
-  top:-22px;
+  top:-20px;
   left:50%;
   transform:translateX(-50%);
   z-index:20;
   color:#ffd21a;
-  font-size:44px;
+  font-size:42px;
   text-shadow:0 0 20px rgba(255,196,0,.9);
 }
 
@@ -163,7 +171,7 @@ h1{
   width:100%;
   height:100%;
   border-radius:50%;
-  border:8px solid #ffbf00;
+  border:7px solid #ffbf00;
   background:
     radial-gradient(circle,#240816 0 26%,transparent 27%),
     conic-gradient(
@@ -180,7 +188,8 @@ h1{
       #111 327.270deg 360deg
     );
   box-shadow:
-    0 0 35px rgba(255,191,0,.35),
+    0 0 40px rgba(255,191,0,.35),
+    0 0 120px rgba(255,0,140,.12),
     inset 0 0 24px rgba(0,0,0,.55);
   overflow:hidden;
   transition:transform 3.4s cubic-bezier(.12,.78,.16,1);
@@ -194,9 +203,9 @@ h1{
   background:
     repeating-conic-gradient(
       transparent 0deg 31.727deg,
-      rgba(255,255,255,.8) 31.727deg 32.727deg
+      rgba(255,255,255,.75) 31.727deg 32.727deg
     );
-  opacity:.75;
+  opacity:.7;
   pointer-events:none;
 }
 
@@ -210,20 +219,20 @@ h1{
   position:absolute;
   left:50%;
   top:50%;
-  width:46px;
-  height:46px;
-  margin-left:-23px;
-  margin-top:-23px;
+  width:44px;
+  height:44px;
+  margin-left:-22px;
+  margin-top:-22px;
   display:grid;
   place-items:center;
   border-radius:12px;
   border:3px solid rgba(255,255,255,.75);
   color:white;
-  font-size:20px;
+  font-size:19px;
   font-weight:900;
   transform:
     rotate(var(--angle))
-    translateY(-200px)
+    translateY(-190px)
     rotate(calc(-1 * var(--angle)));
   z-index:5;
 }
@@ -247,45 +256,45 @@ h1{
 }
 
 .message-box{
-  width:min(560px,100%);
-  font-size:18px;
+  width:min(500px,42vw);
+  font-size:17px;
   font-weight:900;
   color:#ffd21a;
   line-height:1.7;
 }
 
-#message{
-  color:#ffd21a;
+/* BUTTONS */
+
+button{
+  font-family:Arial,sans-serif;
 }
 
 .bet-buttons{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:14px;
-}
-
-button{
-  font-family:Arial,sans-serif;
+  gap:12px;
 }
 
 .bet-btn,
 .choice,
 .spin-btn{
   border:0;
-  border-radius:12px;
+  border-radius:14px;
   font-weight:900;
   cursor:pointer;
+  transition:.15s;
 }
 
 .bet-btn{
-  padding:16px;
-  background:#241235;
+  height:56px;
+  background:rgba(45,10,70,.85);
   color:white;
 }
 
 .bet-btn.active{
   background:linear-gradient(#ffe66e,#ffb400);
   color:#241400;
+  box-shadow:0 0 22px rgba(255,196,0,.45);
 }
 
 .choice{
@@ -298,7 +307,10 @@ button{
 
 .choice.red{background:linear-gradient(#ff4f6d,#b70024);}
 .choice.black{background:linear-gradient(#333,#050505);}
-.choice.green{background:linear-gradient(#13e786,#09a865); color:#002316;}
+.choice.green{
+  background:linear-gradient(#13e786,#09a865);
+  color:#002316;
+}
 
 .choice.selected{
   box-shadow:0 0 25px rgba(255,196,0,.65);
@@ -307,22 +319,24 @@ button{
 
 .spin-btn{
   width:100%;
-  height:74px;
+  height:72px;
   background:linear-gradient(#13e786,#09a865);
   color:#002316;
   font-size:30px;
   box-shadow:0 0 25px rgba(19,231,134,.45);
 }
 
+.spin-btn:hover,
+.bet-btn:hover,
+.choice:hover{
+  transform:translateY(-2px);
+}
+
 .spin-btn:disabled{
   opacity:.45;
 }
 
-.help{
-  color:#13e786;
-  font-weight:900;
-  line-height:1.7;
-}
+/* COIN */
 
 .coin-burst{
   position:absolute;
@@ -344,8 +358,14 @@ button{
 }
 
 @keyframes coinFly{
-  from{transform:translate(0,0) scale(1);opacity:1;}
-  to{transform:translate(var(--x),var(--y)) scale(.35);opacity:0;}
+  from{
+    transform:translate(0,0) scale(1);
+    opacity:1;
+  }
+  to{
+    transform:translate(var(--x),var(--y)) scale(.35);
+    opacity:0;
+  }
 }
 
 .fever-active{
@@ -353,31 +373,67 @@ button{
 }
 
 @keyframes feverFlash{
-  0%,100%{box-shadow:0 0 35px rgba(255,191,0,.35),inset 0 0 24px rgba(0,0,0,.55);}
-  50%{box-shadow:0 0 50px rgba(255,79,216,.8),inset 0 0 35px rgba(255,196,0,.45);}
+  0%,100%{
+    box-shadow:
+      0 0 35px rgba(255,191,0,.35),
+      inset 0 0 24px rgba(0,0,0,.55);
+  }
+  50%{
+    box-shadow:
+      0 0 50px rgba(255,79,216,.8),
+      inset 0 0 35px rgba(255,196,0,.45);
+  }
 }
+
+/* MOBILE */
 
 @media(max-width:1100px){
   .layout{
     grid-template-columns:1fr;
+    align-items:start;
   }
 
   .panel{
-    width:100%;
+    width:min(720px,92vw);
+    margin:0 auto;
+  }
+
+  .main-game{
+    margin-top:10px;
+  }
+
+  .roulette-frame{
+    width:min(500px,86vw);
+    height:min(500px,86vw);
+  }
+
+  .message-box{
+    width:min(500px,86vw);
   }
 }
 
 @media(max-width:760px){
+  body{
+    background-position:center top;
+    background-attachment:scroll;
+  }
+
   header{
-    padding:0 18px;
+    height:auto;
+    padding:14px 18px;
+    gap:12px;
   }
 
   h1{
-    font-size:28px;
+    font-size:24px;
+  }
+
+  .back{
+    font-size:14px;
   }
 
   .layout{
-    padding:20px 18px 60px;
+    padding:18px 16px 50px;
   }
 
   .roulette-frame{
@@ -395,6 +451,10 @@ button{
       rotate(var(--angle))
       translateY(-124px)
       rotate(calc(-1 * var(--angle)));
+  }
+
+  .wheel-center{
+    font-size:30px;
   }
 
   .spin-btn{

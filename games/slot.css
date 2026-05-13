@@ -5,145 +5,166 @@
 }
 
 body{
-  font-family:Arial,sans-serif;
-  background:#02030a;
+  font-family:Arial,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
   color:white;
-  overflow:auto;
+  overflow-x:hidden;
+  background:
+    linear-gradient(rgba(0,0,0,.18),rgba(0,0,0,.42)),
+    url("slot-bg.png") center center / cover no-repeat fixed;
 }
 
 .pixel-bg{
-  position:fixed;
-  inset:0;
-  z-index:-10;
-  background:
-  radial-gradient(circle at 70% 18%,rgba(169,0,255,.35),transparent 25%),
-  radial-gradient(circle at 25% 35%,rgba(0,183,255,.2),transparent 28%),
-  radial-gradient(circle at 50% 90%,rgba(255,196,0,.14),transparent 35%),
-  linear-gradient(180deg,#071127,#02030a);
+  display:none;
 }
 
+/* ===== HEADER ===== */
+
 header{
-  height:82px;
+  height:76px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 5vw;
-  background:rgba(0,0,0,.65);
+  padding:0 4vw;
+  background:rgba(0,0,0,.58);
   backdrop-filter:blur(10px);
-  border-bottom:1px solid rgba(255,196,0,.35);
+  border-bottom:1px solid rgba(255,196,0,.25);
+  position:relative;
+  z-index:20;
 }
 
 .logo{
-  font-size:42px;
+  font-size:34px;
   font-weight:900;
   line-height:.8;
   color:#ffc400;
+  text-shadow:
+    3px 3px 0 #6a2a00,
+    0 0 18px rgba(255,196,0,.8);
 }
 
 .logo span{
   display:block;
   color:#13e786;
+  text-shadow:
+    3px 3px 0 #003d2f,
+    0 0 18px rgba(19,231,134,.75);
 }
 
 .back-btn{
   text-decoration:none;
   color:#ffd21a;
   font-weight:900;
+  font-size:18px;
 }
 
+/* ===== LAYOUT ===== */
+
 .slot-wrapper{
-  min-height:calc(100vh - 82px);
+  min-height:calc(100vh - 76px);
   display:grid;
-  grid-template-columns:380px 1fr;
-  gap:30px;
-  align-items:start;
-  padding:20px 5vw 40px;
+  grid-template-columns:300px 1fr;
+  gap:28px;
+  align-items:center;
+  padding:24px 4vw 36px;
 }
+
+/* ===== LEFT PANEL ===== */
 
 .left-panel{
   display:flex;
   flex-direction:column;
-  gap:20px;
+  gap:16px;
+  position:relative;
+  z-index:10;
 }
 
-.title-box h1{
-  font-size:56px;
-  color:#ffd21a;
-}
-
-.mini{
-  color:#13e786;
-  font-weight:900;
-  letter-spacing:3px;
-  margin-bottom:10px;
+.title-box{
+  display:none;
 }
 
 .info-box{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:14px;
+  gap:12px;
 }
 
 .info{
-  background:rgba(20,12,40,.92);
-  border:2px solid rgba(255,196,0,.3);
-  border-radius:18px;
-  padding:18px;
+  background:rgba(12,8,24,.72);
+  border:1px solid rgba(255,196,0,.28);
+  border-radius:16px;
+  padding:16px;
+  backdrop-filter:blur(10px);
 }
 
 .info span{
-  color:#aaa;
+  color:#ddd;
   font-size:14px;
 }
 
 .info h2{
   margin-top:8px;
-  font-size:36px;
+  font-size:34px;
   color:#ffd21a;
+  text-shadow:0 0 12px rgba(255,196,0,.65);
 }
+
+/* ===== BET ===== */
 
 .bet-buttons{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:14px;
+  gap:12px;
 }
 
 .bet-btn{
-  padding:16px;
+  height:64px;
   border:0;
-  border-radius:12px;
-  background:#241235;
+  border-radius:14px;
+  background:rgba(45,10,70,.78);
   color:white;
+  font-size:22px;
   font-weight:900;
   cursor:pointer;
+  backdrop-filter:blur(8px);
+  box-shadow:inset 0 -5px 0 rgba(0,0,0,.3);
 }
 
 .bet-btn.active{
   background:linear-gradient(#ffe66e,#ffb400);
   color:#241400;
+  box-shadow:
+    0 0 22px rgba(255,196,0,.45),
+    inset 0 -5px 0 rgba(0,0,0,.15);
 }
+
+/* ===== MACHINE AREA ===== */
 
 .machine-area{
   display:flex;
   flex-direction:column;
   align-items:center;
-  margin-top:-20px;
+  justify-content:center;
+  position:relative;
+  z-index:8;
+  margin-top:70px;
 }
 
+/* ===== CHANCE ===== */
+
 .chance-lamp{
-  width:240px;
-  height:62px;
-  margin-bottom:20px;
+  width:220px;
+  height:56px;
+  margin-bottom:16px;
   border-radius:18px;
-  background:#1a0b12;
-  border:4px solid #4d1d1d;
+  background:rgba(30,5,12,.72);
+  border:3px solid rgba(120,40,40,.7);
+  color:rgba(255,120,120,.45);
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:30px;
+  font-size:26px;
   font-weight:900;
-  color:#5a1a1a;
-  transition:.25s;
+  backdrop-filter:blur(8px);
 }
 
 .chance-lamp.on{
@@ -153,32 +174,37 @@ header{
   box-shadow:0 0 35px rgba(255,191,0,.8);
 }
 
+/* ===== SLOT MACHINE ===== */
+
 .slot-machine{
-  width:620px;
-  background:linear-gradient(180deg,#581a00,#240816);
-  border:8px solid #ffbf00;
+  width:min(720px,62vw);
+  padding:20px;
   border-radius:24px;
-  padding:26px;
+  background:rgba(25,0,20,.48);
+  border:5px solid rgba(255,191,0,.85);
+  backdrop-filter:blur(6px);
   box-shadow:
-    0 0 35px rgba(255,191,0,.35),
-    inset 0 0 24px rgba(0,0,0,.55);
+    0 0 38px rgba(255,191,0,.28),
+    0 0 90px rgba(255,0,140,.15);
 }
 
 .reel-window{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:18px;
+  gap:16px;
 }
 
 .reel{
-  height:190px;
-  background:#fff4db;
+  height:180px;
+  background:#fff3df;
   border-radius:18px;
   display:flex;
   align-items:center;
   justify-content:center;
   overflow:hidden;
-  box-shadow:inset 0 -10px 0 rgba(0,0,0,.18);
+  box-shadow:
+    inset 0 -10px 0 rgba(0,0,0,.18),
+    0 0 15px rgba(255,255,255,.15);
 }
 
 .reel span{
@@ -193,115 +219,188 @@ header{
 
 @keyframes spin{
   0%{
-    transform:translateY(-25px);
+    transform:translateY(-24px);
     filter:blur(2px);
   }
 
   100%{
-    transform:translateY(25px);
+    transform:translateY(24px);
     filter:blur(2px);
   }
 }
 
+/* ===== STOP ===== */
+
 .stop-buttons{
-  margin-top:22px;
+  margin-top:18px;
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:16px;
+  gap:14px;
 }
 
 .stop-btn{
-  height:64px;
+  height:60px;
   border:0;
-  border-radius:12px;
-  background:linear-gradient(#ff4f6d,#b70024);
+  border-radius:14px;
+  background:linear-gradient(#ff4d6d,#96001f);
   color:white;
   font-size:22px;
   font-weight:900;
   cursor:pointer;
+  box-shadow:
+    inset 0 -5px 0 rgba(0,0,0,.28),
+    0 0 18px rgba(255,0,80,.25);
 }
 
 .stop-btn:disabled{
   opacity:.4;
 }
 
+/* ===== SPIN ===== */
+
 .spin-btn{
   margin-top:24px;
-  width:260px;
-  height:74px;
+  width:300px;
+  height:76px;
   border:0;
-  border-radius:16px;
-  background:linear-gradient(#13e786,#09a865);
-  color:#002316;
-  font-size:30px;
+  border-radius:18px;
+  background:linear-gradient(#17ff9c,#08b46b);
+  color:#001d12;
+  font-size:34px;
   font-weight:900;
   cursor:pointer;
-  box-shadow:0 0 25px rgba(19,231,134,.45);
+  box-shadow:0 0 35px rgba(19,231,134,.45);
 }
 
+.spin-btn:hover{
+  transform:translateY(-3px);
+}
+
+.spin-btn:active{
+  transform:translateY(3px);
+}
+
+/* ===== MESSAGE ===== */
+
 .message-box{
-  margin-top:20px;
+  margin-top:18px;
   width:100%;
-  padding:18px;
+  padding:16px;
   border-radius:16px;
-  background:rgba(15,10,28,.92);
-  border:2px solid rgba(255,196,0,.28);
+  background:rgba(15,10,28,.76);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,196,0,.28);
   text-align:center;
-  font-size:18px;
+  font-size:17px;
   font-weight:900;
   color:#ffd21a;
-  line-height:1.7;
+  line-height:1.65;
+  box-shadow:0 0 24px rgba(0,0,0,.35);
 }
+
+.machine-area > .message-box{
+  width:min(720px,62vw);
+}
+
+/* ===== MOBILE ===== */
 
 @media(max-width:1100px){
   .slot-wrapper{
     grid-template-columns:1fr;
+    align-items:start;
   }
 
-  .slot-machine{
+  .left-panel{
+    max-width:720px;
     width:100%;
+    margin:0 auto;
   }
 
   .machine-area{
-    margin-top:0;
+    margin-top:10px;
+  }
+
+  .slot-machine,
+  .machine-area > .message-box{
+    width:min(720px,92vw);
   }
 }
 
 @media(max-width:760px){
+  body{
+    background-position:center top;
+    background-attachment:scroll;
+  }
+
   header{
-    padding:0 18px;
+    height:auto;
+    padding:14px 18px;
+    gap:12px;
+  }
+
+  .logo{
+    font-size:28px;
+  }
+
+  .back-btn{
+    font-size:14px;
   }
 
   .slot-wrapper{
-    padding:20px 18px 60px;
+    padding:18px 16px 50px;
   }
 
-  .title-box h1{
-    font-size:44px;
+  .info h2{
+    font-size:28px;
+  }
+
+  .bet-btn{
+    height:56px;
+    font-size:17px;
+  }
+
+  .chance-lamp{
+    width:190px;
+    height:50px;
+    font-size:22px;
   }
 
   .slot-machine{
-    padding:18px;
+    width:100%;
+    padding:14px;
+  }
+
+  .reel-window{
+    gap:9px;
   }
 
   .reel{
-    height:130px;
+    height:116px;
+    border-radius:14px;
   }
 
   .reel span{
-    font-size:66px;
+    font-size:54px;
+  }
+
+  .stop-buttons{
+    gap:9px;
   }
 
   .stop-btn{
-    height:56px;
-    font-size:18px;
+    height:52px;
+    font-size:15px;
   }
 
   .spin-btn{
     width:100%;
+    height:68px;
+    font-size:28px;
   }
 
-  .message-box{
+  .message-box,
+  .machine-area > .message-box{
     width:100%;
+    font-size:15px;
   }
 }

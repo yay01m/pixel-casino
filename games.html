@@ -3,119 +3,120 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>GAME SELECT | PIXEL CASINO</title>
-
   <link rel="stylesheet" href="games.css">
 </head>
 
 <body>
 
-  <div class="pixel-bg"></div>
+<header>
 
-  <header>
+  <a href="./index.html" class="logo">
+    PIXEL
+    <span>CASINO</span>
+  </a>
 
-    <div class="logo">
-      PIXEL
-      <span>CASINO</span>
+  <nav>
+    <a href="./index.html">ホーム</a>
+    <a href="./games.html" class="active">ゲーム</a>
+    <a href="./bonus.html">ボーナス</a>
+    <a href="./ranking.html">ランキング</a>
+  </nav>
+
+</header>
+
+<main>
+
+  <section class="select">
+
+    <p class="small-title">SELECT GAME</p>
+    <h1>遊ぶゲームを選ぼう</h1>
+
+    <div class="game-grid">
+
+      <!-- SLOT -->
+
+      <a href="./games/slot.html" class="game-card slot">
+
+        <div class="slot-machine">
+
+          <div class="slot-label">
+            777
+          </div>
+
+          <div class="slot-reels">
+            <div>7</div>
+            <div>7</div>
+            <div>7</div>
+          </div>
+
+        </div>
+
+        <h2>PIXEL SLOT</h2>
+        <p>ピクセルスロット</p>
+
+        <span>PLAY</span>
+
+      </a>
+
+      <!-- ROULETTE -->
+
+      <a href="./games/roulette.html" class="game-card roulette">
+
+        <div class="roulette-wheel">
+
+          <div class="wheel-center"></div>
+
+          <div class="pointer"></div>
+
+        </div>
+
+        <h2>PIXEL ROULETTE</h2>
+        <p>ピクセルルーレット</p>
+
+        <span>PLAY</span>
+
+      </a>
+
+      <!-- POKER -->
+
+      <a href="./games/poker.html" class="game-card poker">
+
+        <div class="poker-cards">
+
+          <div class="card card-left">
+            A♠
+          </div>
+
+          <div class="card card-center">
+            K♥
+          </div>
+
+          <div class="card card-right">
+            Q♦
+          </div>
+
+        </div>
+
+        <h2>PIXEL POKER</h2>
+        <p>ピクセルポーカー</p>
+
+        <span>PLAY</span>
+
+      </a>
+
     </div>
 
-    <nav>
-      <a href="./index.html">ホーム</a>
-      <a href="./games.html" class="active">ゲーム</a>
-      <a href="#">ボーナス</a>
-      <a href="#">ランキング</a>
-    </nav>
+  </section>
 
-  </header>
-
-  <main>
-
-    <section class="select">
-
-      <p class="small-title">SELECT GAME</p>
-
-      <h1>遊ぶゲームを選ぼう</h1>
-
-      <div class="game-grid">
-
-        <!-- SLOT -->
-        <a href="./games/slot.html" class="game-card slot">
-
-          <div class="slot-machine">
-
-            <div class="slot-label">777</div>
-
-            <div class="slot-reels">
-              <div>7</div>
-              <div>7</div>
-              <div>7</div>
-            </div>
-
-          </div>
-
-          <h2>PIXEL SLOT</h2>
-
-          <p>ピクセルスロット</p>
-
-          <span>PLAY</span>
-
-        </a>
-
-        <!-- ROULETTE -->
-        <a href="./games/roulette.html" class="game-card roulette">
-
-          <div class="roulette-wheel">
-            <div class="wheel-center"></div>
-            <div class="pointer"></div>
-          </div>
-
-          <h2>PIXEL ROULETTE</h2>
-
-          <p>ピクセルルーレット</p>
-
-          <span>PLAY</span>
-
-        </a>
-
-        <!-- POKER -->
-        <a href="./games/poker.html" class="game-card poker">
-
-          <div class="poker-cards">
-
-            <div class="card card-left">A♠</div>
-
-            <div class="card card-center">K♥</div>
-
-            <div class="card card-right">Q♦</div>
-
-          </div>
-
-          <h2>PIXEL POKER</h2>
-
-          <p>ピクセルポーカー</p>
-
-          <span>PLAY</span>
-
-        </a>
-
-      </div>
-
-    </section>
-
-  </main>
-
-  <!-- 救済ポイント -->
   <section class="casino-wallet">
 
     <div class="wallet-box">
-
       <p>所持ポイント</p>
 
       <h2>
         <span id="pointDisplay">0</span> P
       </h2>
-
     </div>
 
     <button id="rescueBtn" class="rescue-btn">
@@ -128,8 +129,10 @@
 
   </section>
 
-  <script src="script.js"></script>
-  <script src="games.js"></script>
+</main>
+
+<script src="script.js"></script>
+<script src="games.js"></script>
 
 </body>
 </html>

@@ -5,80 +5,95 @@
 }
 
 body{
+  min-height:100vh;
   font-family:Arial,sans-serif;
-  background:#02030a;
   color:white;
-  overflow:auto;
+  background:#02030a;
+  overflow-x:hidden;
 }
 
-.pixel-bg{
+.bg{
+  position:fixed;
+  inset:0;
+  z-index:-20;
+  background:url("poker-bg.png") center/cover no-repeat;
+}
+
+.dark-cover{
   position:fixed;
   inset:0;
   z-index:-10;
   background:
-    radial-gradient(circle at 70% 18%,rgba(169,0,255,.35),transparent 25%),
-    radial-gradient(circle at 25% 35%,rgba(0,183,255,.2),transparent 28%),
-    radial-gradient(circle at 50% 90%,rgba(255,196,0,.14),transparent 35%),
-    linear-gradient(180deg,#071127,#02030a);
+    linear-gradient(180deg,rgba(0,0,0,.5),rgba(0,0,0,.15) 35%,rgba(0,0,0,.65)),
+    radial-gradient(circle at center,rgba(0,0,0,.05),rgba(0,0,0,.45));
+  pointer-events:none;
 }
 
 header{
-  height:82px;
+  height:86px;
   display:flex;
   align-items:center;
   justify-content:space-between;
   padding:0 5vw;
-  background:rgba(0,0,0,.65);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid rgba(255,196,0,.35);
+  background:rgba(0,0,0,.72);
+  border-bottom:1px solid rgba(255,196,0,.45);
+  backdrop-filter:blur(6px);
 }
 
 .back{
   text-decoration:none;
   color:#ffd21a;
   font-weight:900;
+  font-size:18px;
 }
 
 h1{
-  font-size:42px;
+  font-size:44px;
   font-weight:900;
   color:#ffc400;
+  letter-spacing:2px;
+  text-shadow:0 4px 0 #4b2d00;
 }
 
 .poker-layout{
-  min-height:calc(100vh - 82px);
-  padding:28px 5vw 50px;
+  min-height:calc(100vh - 86px);
+  padding:30px 5vw 60px;
   text-align:center;
 }
 
 .top-panel{
   display:grid;
-  grid-template-columns:repeat(2,220px);
+  grid-template-columns:repeat(2,230px);
   justify-content:center;
-  gap:14px;
-  margin-bottom:20px;
+  gap:18px;
+  margin-bottom:22px;
 }
 
 .status-box,
 .message-box,
 .pay-table,
 .help{
-  background:rgba(20,12,40,.92);
-  border:2px solid rgba(255,196,0,.3);
+  background:rgba(18,10,38,.86);
+  border:2px solid rgba(255,196,0,.45);
+  box-shadow:0 0 22px rgba(0,0,0,.65);
+}
+
+.status-box{
   border-radius:18px;
-  padding:18px;
+  padding:22px 18px;
 }
 
 .status-box p{
-  color:#aaa;
-  font-size:14px;
+  color:#b9b6c8;
+  font-size:15px;
   font-weight:900;
-  margin-bottom:8px;
+  margin-bottom:10px;
 }
 
 .status-box strong{
   color:#ffd21a;
-  font-size:34px;
+  font-size:38px;
+  text-shadow:0 3px 0 #5a3500;
 }
 
 .bet-buttons,
@@ -86,7 +101,7 @@ h1{
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
-  gap:14px;
+  gap:16px;
   margin:18px 0;
 }
 
@@ -97,98 +112,96 @@ button{
 .bet-btn,
 .main-btn{
   border:0;
-  border-radius:12px;
+  border-radius:14px;
   font-weight:900;
   cursor:pointer;
+  transition:.15s;
 }
 
 .bet-btn{
-  min-width:96px;
+  min-width:100px;
   padding:16px;
-  background:#241235;
+  background:rgba(38,16,58,.92);
   color:white;
+  font-size:16px;
 }
 
 .bet-btn.active{
-  background:linear-gradient(#ffe66e,#ffb400);
-  color:#241400;
-}
-
-.main-btn{
-  min-width:180px;
-  height:66px;
-  background:linear-gradient(#13e786,#09a865);
-  color:#002316;
-  font-size:26px;
-  box-shadow:0 0 25px rgba(19,231,134,.45);
-}
-
-.main-btn:disabled{
-  opacity:.45;
+  background:linear-gradient(#ffe978,#ffbb00);
+  color:#211200;
+  box-shadow:0 0 20px rgba(255,196,0,.35);
 }
 
 .table{
   width:min(980px,100%);
-  margin:24px auto;
-  padding:28px;
-  border-radius:24px;
-  border:8px solid #ffbf00;
+  min-height:160px;
+  margin:26px auto;
+  padding:24px;
+  border-radius:28px;
+  border:8px solid #ffc400;
   background:
-    radial-gradient(circle at center,rgba(19,231,134,.16),transparent 60%),
-    linear-gradient(180deg,#0b5a35,#06351f);
+    radial-gradient(circle at center,rgba(34,255,151,.16),transparent 60%),
+    linear-gradient(180deg,rgba(7,89,50,.96),rgba(2,50,29,.96));
   box-shadow:
-    0 0 35px rgba(255,191,0,.35),
-    inset 0 0 24px rgba(0,0,0,.55);
+    0 0 34px rgba(255,196,0,.35),
+    inset 0 0 30px rgba(0,0,0,.65);
 }
 
 .cards{
   display:grid;
-  grid-template-columns:repeat(5,minmax(100px,145px));
+  grid-template-columns:repeat(5,minmax(95px,140px));
   justify-content:center;
   gap:16px;
 }
 
 .card{
   aspect-ratio:5/7;
-  border-radius:18px;
-  border:4px solid #ffbf00;
-  background:#fff4db;
+  border-radius:16px;
+  border:4px solid #ffc400;
+  background:#fff3d7;
   color:#111;
-  padding:14px;
+  padding:12px;
   display:flex;
   flex-direction:column;
   justify-content:space-between;
   cursor:pointer;
-  box-shadow:inset 0 -10px 0 rgba(0,0,0,.12);
+  box-shadow:
+    0 8px 0 rgba(0,0,0,.35),
+    inset 0 -10px 0 rgba(0,0,0,.12);
   transition:.18s;
 }
 
+.card:hover{
+  transform:translateY(-6px);
+}
+
 .card.selected{
-  transform:translateY(-16px);
+  transform:translateY(-18px);
   box-shadow:
-    0 0 28px rgba(255,196,0,.8),
+    0 0 30px rgba(255,196,0,.9),
+    0 8px 0 rgba(0,0,0,.35),
     inset 0 -10px 0 rgba(0,0,0,.12);
 }
 
 .card.red-suit{
-  color:#e30012;
+  color:#d60018;
 }
 
-.card .rank{
-  font-size:34px;
+.rank{
+  font-size:32px;
   font-weight:900;
   text-align:left;
 }
 
-.card .suit{
-  font-size:56px;
+.suit{
+  font-size:54px;
   font-weight:900;
   text-align:center;
 }
 
-.card .hold{
+.hold{
   height:24px;
-  color:#ffd21a;
+  color:#ffc400;
   font-weight:900;
   text-shadow:1px 1px 0 #4d2500;
 }
@@ -196,19 +209,38 @@ button{
 .message-box{
   width:min(720px,100%);
   margin:0 auto;
+  border-radius:20px;
+  padding:20px;
   color:#ffd21a;
-  font-size:18px;
+  font-size:19px;
   font-weight:900;
   line-height:1.7;
 }
 
 #handName{
-  color:#13e786;
+  color:#18e690;
+}
+
+.main-btn{
+  min-width:190px;
+  height:68px;
+  background:linear-gradient(#17ec8a,#08ad65);
+  color:#002315;
+  font-size:28px;
+  box-shadow:0 0 28px rgba(23,236,138,.45);
+}
+
+.main-btn:disabled{
+  opacity:.38;
+  cursor:not-allowed;
+  box-shadow:none;
 }
 
 .pay-table{
   width:min(860px,100%);
-  margin:24px auto;
+  margin:28px auto 18px;
+  border-radius:22px;
+  padding:20px;
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:12px;
@@ -217,41 +249,47 @@ button{
 .pay-table h2{
   grid-column:1/-1;
   color:#ffd21a;
-  font-size:28px;
+  font-size:30px;
+  text-shadow:0 3px 0 #4b2d00;
 }
 
 .pay-table div{
-  background:#241235;
+  background:rgba(38,16,58,.9);
   border-radius:12px;
   padding:12px;
   font-weight:900;
-  color:white;
 }
 
 .help{
   width:min(560px,100%);
   margin:0 auto;
-  color:#13e786;
+  border-radius:18px;
+  padding:15px;
+  color:#18e690;
   font-weight:900;
   line-height:1.7;
 }
 
 @media(max-width:900px){
+  h1{
+    font-size:34px;
+  }
+
   .cards{
-    grid-template-columns:repeat(5,minmax(76px,1fr));
+    grid-template-columns:repeat(5,minmax(70px,1fr));
     gap:10px;
   }
 
   .card{
-    padding:10px;
+    padding:9px;
   }
 
-  .card .rank{
-    font-size:26px;
+  .rank{
+    font-size:24px;
   }
 
-  .card .suit{
-    font-size:42px;
+  .suit{
+    font-size:40px;
   }
 
   .pay-table{
@@ -259,46 +297,73 @@ button{
   }
 }
 
-@media(max-width:760px){
+@media(max-width:650px){
   header{
-    padding:0 18px;
+    height:72px;
+    padding:0 16px;
+  }
+
+  .back{
+    font-size:13px;
   }
 
   h1{
-    font-size:28px;
+    font-size:25px;
+    letter-spacing:1px;
   }
 
   .poker-layout{
-    padding:20px 18px 60px;
+    min-height:calc(100vh - 72px);
+    padding:18px 14px 50px;
   }
 
   .top-panel{
     grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .status-box{
+    padding:16px 10px;
+  }
+
+  .status-box strong{
+    font-size:28px;
+  }
+
+  .bet-btn{
+    min-width:72px;
+    padding:13px 8px;
   }
 
   .table{
-    padding:18px;
+    padding:14px;
+    border-width:6px;
   }
 
   .cards{
-    gap:8px;
+    gap:7px;
   }
 
   .card{
-    border-radius:12px;
-    padding:8px;
+    border-width:3px;
+    border-radius:11px;
+    padding:6px;
   }
 
-  .card .rank{
-    font-size:20px;
+  .rank{
+    font-size:18px;
   }
 
-  .card .suit{
-    font-size:32px;
+  .suit{
+    font-size:29px;
   }
 
-  .card .hold{
-    font-size:11px;
+  .hold{
+    font-size:10px;
+  }
+
+  .message-box{
+    font-size:16px;
   }
 
   .main-btn{

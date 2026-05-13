@@ -4,108 +4,115 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PIXEL CASINO</title>
-
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <div class="pixel-bg"></div>
+<section class="hero">
 
-  <span class="coin c1"></span>
-  <span class="coin c2"></span>
-  <span class="coin c3"></span>
-  <span class="coin c4"></span>
-
-  <header>
+  <header class="header">
 
     <div class="logo">
       PIXEL
       <span>CASINO</span>
     </div>
 
-    <nav>
-      <a href="./index.html" class="active">ホーム</a>
-      <a href="./games.html">ゲーム</a>
-      <a href="#">ボーナス</a>
-      <a href="#">ランキング</a>
+    <nav class="nav">
+      <a class="active" href="index.html">ホーム</a>
+      <a href="games.html">ゲーム</a>
+      <a href="bonus.html">ボーナス</a>
+      <a href="ranking.html">ランキング</a>
     </nav>
 
-    <div class="header-buttons">
-
-      <div class="points-display">
+    <div class="right">
+      <div class="points">
         POINTS :
         <span id="points">30</span>
       </div>
 
-      <a href="./games.html" class="btn btn-yellow">
-        今すぐプレイ
-      </a>
+      <button
+        class="play-btn"
+        onclick="location.href='games.html'">
 
+        今すぐプレイ
+
+      </button>
     </div>
 
   </header>
 
-  <main>
+  <main class="hero-content">
 
-    <section class="hero">
+    <button
+      class="main-btn"
+      onclick="location.href='games.html'">
 
-      <div class="hero-left">
+      👑 ゲーム選択へ
 
-        <h1>
-          PIXEL
-          <span>CASINO</span>
-        </h1>
-
-        <p class="lead">
-          遊ぶほど熱くなる、最強カジノ体験。
-        </p>
-
-        <p class="sub">
-          スロット、ルーレット、ポーカーを搭載した
-          ハイクオリティゲームサイト。
-        </p>
-
-        <div class="cta">
-
-          <a href="./games.html" class="btn btn-yellow">
-            ゲーム選択へ
-          </a>
-
-        </div>
-
-      </div>
-
-      <div class="hero-right">
-
-        <div class="beam beam-green"></div>
-        <div class="beam beam-purple"></div>
-
-        <div class="castle">
-
-          <div class="side-build left"></div>
-          <div class="side-build right"></div>
-
-          <div class="tower left"></div>
-          <div class="tower right"></div>
-
-          <div class="center-build"></div>
-
-          <div class="crown">♛</div>
-
-          <div class="casino-sign">
-            CASINO
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
+    </button>
 
   </main>
 
-  <script src="script.js"></script>
+  <div class="online-box">
+
+    <p>● ONLINE PLAYERS</p>
+
+    <strong id="onlineCount">0</strong>
+
+  </div>
+
+  <div class="info-bar">
+
+    <div class="info">
+
+      <span>🎁</span>
+
+      <div>
+        <h3>新規登録ボーナス</h3>
+        <p>特典を受け取ってゲームを楽しもう！</p>
+      </div>
+
+    </div>
+
+    <div class="info">
+
+      <span>🏆</span>
+
+      <div>
+        <h3>ランキング機能</h3>
+        <p>上位を目指して報酬を獲得！</p>
+      </div>
+
+    </div>
+
+    <div class="info">
+
+      <span>👑</span>
+
+      <div>
+        <h3>VIPプログラム</h3>
+        <p>遊ぶほど特典が増えていく！</p>
+      </div>
+
+    </div>
+
+    <div class="info">
+
+      <span>🛡️</span>
+
+      <div>
+        <h3>安心・安全</h3>
+        <p>公正なゲームで安心してプレイ！</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<script src="script.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RANKING | PIXEL CASINO</title>
+  <link rel="stylesheet" href="ranking.css">
+</head>
+
+<body>
+
+<header>
+
+  <a href="./index.html" class="logo">
+    PIXEL
+    <span>CASINO</span>
+  </a>
+
+  <nav>
+    <a href="./index.html">ホーム</a>
+    <a href="./games.html">ゲーム</a>
+    <a href="./bonus.html">ボーナス</a>
+    <a href="./ranking.html" class="active">ランキング</a>
+  </nav>
+
+</header>
+
+<main class="ranking-page">
+
+  <section class="ranking-card">
+
+    <p class="small-title">HIGH SCORE</p>
+
+    <h1>ランキング</h1>
+
+    <div class="rank-box first">
+      <div class="rank-icon">👑</div>
+
+      <div>
+        <p>最高ポイント</p>
+        <h2><span id="highScore">0</span> P</h2>
+      </div>
+    </div>
+
+    <div class="date-box">
+      <p>記録した日</p>
+      <h3 id="highScoreDate">まだ記録なし</h3>
+    </div>
+
+    <div class="now-box">
+      <p>現在のポイント</p>
+      <h3><span id="points">0</span> P</h3>
+    </div>
+
+    <a href="./games.html" class="back-btn">
+      ゲーム選択へ戻る
+    </a>
+
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+<script src="ranking.js"></script>
+
+</body>
+</html>

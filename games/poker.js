@@ -15,6 +15,7 @@ let selected = [];
 let playing = false;
 
 const suits = ["♠", "♥", "♦", "♣"];
+
 const ranks = [
   { label: "A", value: 14 },
   { label: "2", value: 2 },
@@ -31,18 +32,51 @@ const ranks = [
   { label: "K", value: 13 }
 ];
 
-function updateUI() {
-  pointsEl.textContent = getPoints();
+function safeGetPoints(){
+  if(typeof getPoints === "function"){
+    return getPoints();
+  }
+
+  return Number(localStorage.getItem("pixelCasinoPoints") || 0);
+}
+
+function safeAddPoints(amount){
+  if(typeof addPoints === "function"){
+    addPoints(amount);
+    return;
+  }
+
+  const now = safeGetPoints();
+  localStorage.setItem("pixelCasinoPoints", now + amount);
+}
+
+function safeSpendPoints(amount){
+  if(typeof spendPoints === "function"){
+    return spendPoints(amount);
+  }
+
+  const now = safeGetPoints();
+
+  if(now < amount){
+    return false;
+  }
+
+  localStorage.setItem("pixelCasinoPoints", now - amount);
+  return true;
+}
+
+function updateUI(){
+  pointsEl.textContent = safeGetPoints();
   betText.textContent = bet;
 }
 
-function createDeck() {
+function createDeck(){
   const newDeck = [];
 
   suits.forEach(suit => {
     ranks.forEach(rank => {
       newDeck.push({
-        suit,
+        suit: suit,
         rank: rank.label,
         value: rank.value
       });
@@ -52,23 +86,25 @@ function createDeck() {
   return shuffle(newDeck);
 }
 
-function shuffle(array) {
+function shuffle(array){
   const arr = [...array];
 
-  for (let i = arr.length - 1; i > 0; i--) {
+  for(let i = arr.length - 1; i > 0; i--){
     const j = Math.floor(Math.random() * (i + 1));
+    const temp = arr[i];
 
-    [arr[i], arr[j]] = [arr[j], arr[i]];
+    arr[i] = arr[j];
+    arr[j] = temp;
   }
 
   return arr;
 }
 
-function drawCard() {
+function drawCard(){
   return deck.pop();
 }
 
-function renderCards() {
+function renderCards(){
   cardsEl.innerHTML = "";
 
   hand.forEach((card, index) => {
@@ -76,11 +112,11 @@ function renderCards() {
 
     div.className = "card";
 
-    if (card.suit === "♥" || card.suit === "♦") {
+    if(card.suit === "♥" || card.suit === "♦"){
       div.classList.add("red-suit");
     }
 
-    if (selected.includes(index)) {
+    if(selected.includes(index)){
       div.classList.add("selected");
     }
 
@@ -98,23 +134,28 @@ function renderCards() {
   });
 }
 
-function toggleCard(index) {
-  if (!playing) return;
+function toggleCard(index){
+  if(!playing){
+    return;
+  }
 
-  if (selected.includes(index)) {
+  if(selected.includes(index)){
     selected = selected.filter(i => i !== index);
-  } else {
+  }else{
     selected.push(index);
   }
 
   renderCards();
 }
 
-function deal() {
-  if (playing) return;
+function deal(){
+  if(playing){
+    return;
+  }
 
-  if (!spendPoints(bet)) {
+  if(!safeSpendPoints(bet)){
     message.textContent = "ポイント不足！ゲーム選択画面で救済を受け取ろう";
+    handNameEl.textContent = "---";
     updateUI();
     return;
   }
@@ -123,7 +164,7 @@ function deal() {
   hand = [];
   selected = [];
 
-  for (let i = 0; i < 5; i++) {
+  for(let i = 0; i < 5; i++){
     hand.push(drawCard());
   }
 
@@ -139,11 +180,13 @@ function deal() {
   updateUI();
 }
 
-function draw() {
-  if (!playing) return;
+function draw(){
+  if(!playing){
+    return;
+  }
 
-  for (let i = 0; i < hand.length; i++) {
-    if (!selected.includes(i)) {
+  for(let i = 0; i < hand.length; i++){
+    if(!selected.includes(i)){
       hand[i] = drawCard();
     }
   }
@@ -159,20 +202,19 @@ function draw() {
   const result = judgeHand(hand);
   handNameEl.textContent = result.name;
 
-  if (result.multiplier > 0) {
+  if(result.multiplier > 0){
     const win = bet * result.multiplier;
 
-    addPoints(win);
-
+    safeAddPoints(win);
     message.textContent = `${result.name}！ +${win}P`;
-  } else {
+  }else{
     message.textContent = "役なし... LOSE";
   }
 
   updateUI();
 }
 
-function judgeHand(cards) {
+function judgeHand(cards){
   const values = cards.map(card => card.value).sort((a, b) => a - b);
   const suitsOnly = cards.map(card => card.suit);
 
@@ -183,24 +225,22 @@ function judgeHand(cards) {
   });
 
   const countValues = Object.values(counts).sort((a, b) => b - a);
-
   const isFlush = suitsOnly.every(suit => suit === suitsOnly[0]);
-
   const uniqueValues = [...new Set(values)];
 
   let isStraight = false;
 
-  if (uniqueValues.length === 5) {
+  if(uniqueValues.length === 5){
     const min = uniqueValues[0];
     const max = uniqueValues[4];
 
-    if (max - min === 4) {
+    if(max - min === 4){
       isStraight = true;
     }
 
     const lowAce = [2, 3, 4, 5, 14];
 
-    if (JSON.stringify(uniqueValues) === JSON.stringify(lowAce)) {
+    if(JSON.stringify(uniqueValues) === JSON.stringify(lowAce)){
       isStraight = true;
     }
   }
@@ -213,39 +253,39 @@ function judgeHand(cards) {
     values.includes(13) &&
     values.includes(14);
 
-  if (isRoyal) {
+  if(isRoyal){
     return { name: "ROYAL FLUSH", multiplier: 50 };
   }
 
-  if (isStraight && isFlush) {
+  if(isStraight && isFlush){
     return { name: "STRAIGHT FLUSH", multiplier: 30 };
   }
 
-  if (countValues[0] === 4) {
+  if(countValues[0] === 4){
     return { name: "FOUR CARD", multiplier: 25 };
   }
 
-  if (countValues[0] === 3 && countValues[1] === 2) {
+  if(countValues[0] === 3 && countValues[1] === 2){
     return { name: "FULL HOUSE", multiplier: 10 };
   }
 
-  if (isFlush) {
+  if(isFlush){
     return { name: "FLUSH", multiplier: 8 };
   }
 
-  if (isStraight) {
+  if(isStraight){
     return { name: "STRAIGHT", multiplier: 6 };
   }
 
-  if (countValues[0] === 3) {
+  if(countValues[0] === 3){
     return { name: "THREE CARD", multiplier: 4 };
   }
 
-  if (countValues[0] === 2 && countValues[1] === 2) {
+  if(countValues[0] === 2 && countValues[1] === 2){
     return { name: "TWO PAIR", multiplier: 2 };
   }
 
-  if (countValues[0] === 2) {
+  if(countValues[0] === 2){
     return { name: "ONE PAIR", multiplier: 1 };
   }
 
@@ -254,7 +294,9 @@ function judgeHand(cards) {
 
 betBtns.forEach(btn => {
   btn.addEventListener("click", () => {
-    if (playing) return;
+    if(playing){
+      return;
+    }
 
     betBtns.forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
@@ -268,23 +310,25 @@ dealBtn.addEventListener("click", deal);
 drawBtn.addEventListener("click", draw);
 
 document.addEventListener("keydown", event => {
-  if (event.repeat) return;
+  if(event.repeat){
+    return;
+  }
 
-  if (event.code === "Space") {
+  if(event.code === "Space"){
     event.preventDefault();
 
-    if (!playing) {
+    if(!playing){
       deal();
-    } else {
+    }else{
       draw();
     }
   }
 
-  if (event.code === "Digit1") toggleCard(0);
-  if (event.code === "Digit2") toggleCard(1);
-  if (event.code === "Digit3") toggleCard(2);
-  if (event.code === "Digit4") toggleCard(3);
-  if (event.code === "Digit5") toggleCard(4);
+  if(event.code === "Digit1") toggleCard(0);
+  if(event.code === "Digit2") toggleCard(1);
+  if(event.code === "Digit3") toggleCard(2);
+  if(event.code === "Digit4") toggleCard(3);
+  if(event.code === "Digit5") toggleCard(4);
 });
 
 updateUI();

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BONUS | PIXEL CASINO</title>
+  <link rel="stylesheet" href="bonus.css">
+</head>
+
+<body>
+
+<header>
+
+  <a href="./index.html" class="logo">
+    PIXEL
+    <span>CASINO</span>
+  </a>
+
+  <nav>
+    <a href="./index.html">ホーム</a>
+    <a href="./games.html">ゲーム</a>
+    <a href="./bonus.html" class="active">ボーナス</a>
+    <a href="#">ランキング</a>
+  </nav>
+
+</header>
+
+<main class="bonus-page">
+
+  <section class="bonus-card">
+
+    <p class="small-title">DAILY BONUS</p>
+
+    <h1>毎日ボーナス</h1>
+
+    <p class="bonus-desc">
+      1日1回だけ、ランダムでポイントを受け取れます。
+    </p>
+
+    <div class="point-box">
+      <p>現在のポイント</p>
+      <h2><span id="points">0</span> P</h2>
+    </div>
+
+    <div class="treasure-box">
+      🎁
+    </div>
+
+    <button id="bonusBtn" class="bonus-btn">
+      ボーナスを受け取る
+    </button>
+
+    <p id="bonusMessage" class="bonus-message">
+      今日のボーナスを受け取ろう！
+    </p>
+
+    <a href="./games.html" class="back-btn">
+      ゲーム選択へ戻る
+    </a>
+
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+<script src="bonus.js"></script>
+
+</body>
+</html>

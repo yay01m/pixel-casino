@@ -3,94 +3,89 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PIXEL ROULETTE | PIXEL CASINO</title>
+  <title>PIXEL ROULETTE</title>
   <link rel="stylesheet" href="roulette.css">
 </head>
 
 <body>
-  <div class="pixel-bg"></div>
 
-  <header>
-    <a href="../games.html" class="back">← GAME SELECT</a>
-    <h1>PIXEL ROULETTE</h1>
-  </header>
+<header>
+  <a href="../games.html" class="back">← GAME SELECT</a>
+  <h1>PIXEL ROULETTE</h1>
+</header>
 
-  <main class="layout">
+<main class="layout">
 
-    <section class="panel side">
-      <div class="box">
-        <p class="label">POINT</p>
-        <strong><span id="points">0</span> P</strong>
+  <section class="panel left-panel">
+    <div class="box">
+      <p class="label">POINT</p>
+      <strong><span id="points">0</span> P</strong>
+    </div>
+
+    <div class="box fever-box">
+      <p class="label">FEVER GAUGE</p>
+      <div class="gauge">
+        <div id="feverGauge"></div>
       </div>
+      <small id="feverText">FEVERまで 100%</small>
+    </div>
 
-      <div class="box">
-        <p class="label">FEVER GAUGE</p>
-        <div class="gauge">
-          <div id="feverGauge"></div>
-        </div>
-        <small id="feverText">FEVERまで 100%</small>
+    <div class="box history-box">
+      <p class="label">HISTORY</p>
+      <div id="historyList" class="history">
+        <span>---</span>
       </div>
+    </div>
+  </section>
 
-      <div class="box">
-        <p class="label">HISTORY</p>
-        <div id="historyList" class="history">
-          <span>---</span>
-        </div>
-      </div>
-    </section>
+  <section class="main-game">
+    <div id="coinBurst" class="coin-burst"></div>
 
-    <section class="main-game">
-      <div id="coinBurst" class="coin-burst"></div>
+    <div class="roulette-frame">
+      <div class="pointer">▼</div>
 
-      <div class="roulette-frame">
-        <div class="pointer">▼</div>
+      <div id="wheel" class="wheel">
+        <div id="numberRing" class="number-ring"></div>
 
-        <div id="wheel" class="wheel">
-          <div id="numberRing" class="number-ring"></div>
-          <div class="wheel-center">
-            <span>★</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="message-box">
-        <p id="message">BETを選んでSPIN！</p>
-        <p>RESULT：<span id="resultNumber">--</span></p>
-      </div>
-    </section>
-
-    <section class="panel side">
-      <div class="box">
-        <p class="label">BET</p>
-        <h2><span id="betText">10</span>P</h2>
-
-        <div class="bet-buttons">
-          <button class="bet-btn active" data-bet="10">10P</button>
-          <button class="bet-btn" data-bet="30">30P</button>
-          <button class="bet-btn" data-bet="50">50P</button>
-          <button class="bet-btn" data-bet="100">100P</button>
+        <div class="wheel-center">
+          <span>★</span>
         </div>
       </div>
+    </div>
 
-      <div class="box">
-        <p class="label">SELECT COLOR</p>
+    <div class="message-box">
+      <p id="message">BETを選んでSPIN！</p>
+      <p>RESULT：<span id="resultNumber">--</span></p>
+    </div>
+  </section>
 
-        <button id="redBtn" class="choice red">RED ×2</button>
-        <button id="blackBtn" class="choice black">BLACK ×2</button>
-        <button id="greenBtn" class="choice green">GREEN ×14</button>
+  <section class="panel right-panel">
+    <div class="box">
+      <p class="label">BET</p>
+      <h2><span id="betText">10</span>P</h2>
+
+      <div class="bet-buttons">
+        <button class="bet-btn active" data-bet="10">10P</button>
+        <button class="bet-btn" data-bet="30">30P</button>
+        <button class="bet-btn" data-bet="50">50P</button>
+        <button class="bet-btn" data-bet="100">100P</button>
       </div>
+    </div>
 
-      <button id="spinBtn" class="spin-btn">SPIN</button>
+    <div class="box">
+      <p class="label">SELECT COLOR</p>
 
-      <div class="help">
-        <p>SPACE：SPIN</p>
-        <p>1：RED / 2：BLACK / 3：GREEN</p>
-      </div>
-    </section>
+      <button id="redBtn" class="choice red">RED ×2</button>
+      <button id="blackBtn" class="choice black">BLACK ×2</button>
+      <button id="greenBtn" class="choice green">GREEN ×14</button>
+    </div>
 
-  </main>
+    <button id="spinBtn" class="spin-btn">SPIN</button>
+  </section>
 
-  <script src="../script.js"></script>
-  <script src="roulette.js"></script>
+</main>
+
+<script src="../script.js"></script>
+<script src="roulette.js"></script>
 </body>
 </html>
